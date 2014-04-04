@@ -1,0 +1,34 @@
+# Eclipse
+.classpath
+.project
+.settings/
+/.metadata
+.springBeans
+Servers/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+overlays/
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+
+# Node.js
+node_modules/
+
+# Vim backup files
+*.swp
+
+# Project specific
+test.*.db
+
+# Generated
+content/index.html
+content/index.min.html
+content/styles/

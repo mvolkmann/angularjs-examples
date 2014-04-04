@@ -1,0 +1,12 @@
+body {
+  font-family: sans-serif;
+}
+
+.box {
+  background-color: yellow;
+  border: solid black 1px;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  width: 120px;
+}

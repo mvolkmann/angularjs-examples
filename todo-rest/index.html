@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app="Todo">
+  <head>
+    <link rel="stylesheet" href="todo.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.js"></script>
+    <script src="todo.js"></script>
+  </head>
+  <body ng-controller="TodoCtrl">
+    <h2>To Do List</h2>
+    <button id="change-view-btn" ng-click="changeView()">
+      Show {{otherView}}
+    </button>
+    <div ng-view="main"></div> 
+  </body>
+</html>

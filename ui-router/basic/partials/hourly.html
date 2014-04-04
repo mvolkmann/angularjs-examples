@@ -1,0 +1,12 @@
+<h3>Hourly Forecast</h3>
+
+<table>
+  <tr>
+    <th>Time</th>
+    <th>Temperature</th>
+  </tr>
+  <tr ng-repeat="hourForecast in hourForecasts">
+    <td>{{hourForecast.hour}}</td>
+    <td class="number">{{hourForecast.temperature}}</td>
+  </tr>
+</table>

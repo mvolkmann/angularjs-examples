@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    <script src="demo.js"></script>
+  </head>
+  <body ng-controller="GrandparentCtrl">
+    <div>Emits go up.  Broadcasts go down.</div>
+    <div>Grandparent scope is {{$id}}.</div>
+    <button ng-click="emitDemo()">Grandparent Emit</button>
+    <button ng-click="broadcastDemo()">Grandparent Broadcast</button>
+    <div ng-controller="ParentCtrl">
+      <div>Parent scope is {{$id}}.</div>
+      <button ng-click="emitDemo()">Parent Emit</button>
+      <button ng-click="broadcastDemo()">Parent Broadcast</button>
+      <div ng-controller="ChildCtrl">
+        <div>Child scope is {{$id}}.</div>
+        <button ng-click="emitDemo()">Child Emit</button>
+        <button ng-click="broadcastDemo()">Child Broadcast</button>
+      </div>
+    </div>
+  </body>
+</html>

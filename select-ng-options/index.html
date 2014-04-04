@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+    <script src="demo.js"></script>
+  </head>
+  <body>
+    <div ng-controller="DemoCtrl">
+      1) Pick a fruit:
+      <select ng-model="selectedFruit"
+        ng-options="fruit.name for fruit in fruitArr | orderBy:'name'">
+      </select>
+      <div>
+        You selected {{selectedFruit.name}} which is
+        <span style="color:{{selectedFruit.color}}">{{selectedFruit.color}}</span>.
+      </div>
+
+      <br>
+      2) Pick a fruit:
+      <select ng-model="selectedFruitColor"
+        ng-options="fruit.color as fruit.name for fruit in fruitArr | orderBy:'name'">
+      </select>
+      <div>
+        The color of the selected fruit is
+        <span style="color:{{selectedFruitColor}}">{{selectedFruitColor}}</span>.
+      </div>
+
+      <br>
+      3) Pick a fruit:
+      <select ng-model="selectedFruit"
+        ng-options="fruit.name group by fruit.color for fruit in fruitArr | orderBy:'name'">
+      </select>
+      <div>
+        You selected {{selectedFruit.name}}.
+      </div>
+
+      <br>
+      4) Pick a fruit:
+      <select ng-model="selectedFruitName"
+        ng-options="fruit.name as fruit.name group by fruit.color for fruit in fruitArr | orderBy:'name'">
+        <!-- sorts within groups -->
+      </select>
+      <div>
+        You selected {{selectedFruitName}}.
+      </div>
+
+      <br>
+      5) Pick a fruit:
+      <select ng-model="selectedFruit"
+        ng-options="name for (name, fruit) in fruitMap | orderBy:'name'">
+      </select>
+      <div>
+        You selected {{selectedFruit.name}} which is
+        <span style="color:{{selectedFruit.color}}">{{selectedFruit.color}}</span>.
+      </div>
+
+      <br>
+      6) Pick a fruit:
+      <!-- Can't select each fruit that has the same color! -->
+      <select ng-model="selectedFruitColor"
+        ng-options="fruit.color as name for (name, fruit) in fruitMap | orderBy:'name'">
+      </select>
+      <div>
+        The color of the selected fruit is
+        <span style="color:{{selectedFruitColor}}">{{selectedFruitColor}}</span>.
+      </div>
+
+      <br>
+      7) Pick a fruit:
+      <select ng-model="selectedFruit"
+        ng-options="name group by fruit.color for (name, fruit) in fruitMap | orderBy:'name'">
+      </select>
+      <div>
+        You selected {{selectedFruit.name}} which is
+        <span style="color:{{selectedFruit.color}}">{{selectedFruit.color}}</span>.
+      </div>
+
+      <br>
+      8) Pick a fruit:
+      <!-- Can't select each fruit that has the same color! -->
+      <select ng-model="selectedFruitColor"
+        ng-options="fruit.color as name group by fruit.color for (name, fruit) in fruitMap | orderBy:'name'">
+      </select>
+      <div>
+        The color of the selected fruit is
+        <span style="color:{{selectedFruitColor}}">{{selectedFruitColor}}</span>.
+      </div>
+    </div>
+  </body>
+</html>

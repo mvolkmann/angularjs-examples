@@ -1,0 +1,35 @@
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  background-color: orange;
+  padding: 10px;
+  margin: 0;
+}
+
+table, th, td {
+  border: solid gray 1px;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: linen;
+}
+
+th, td {
+  padding: 10px;
+}
+
+#links {
+  font-size: 8pt;
+  margin-top: 8px;
+}
+
+#links a {
+  margin-right: 8px;
+}
+
+.number {
+  text-align: right;
+}

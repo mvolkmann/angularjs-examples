@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    <script src="demo.js"></script>
+  </head>
+  <body ng-controller="DemoCtrl">
+    <label>Tool</label>
+    <select ng-options="url as name for (name, url) in tools"
+      ng-model="toolUrl"></select>
+    <a ng-href="{{toolUrl}}" ng-show="toolUrl"
+      ng-click="saveToolUrl()">
+      Go There
+    </a>
+  </body>
+</html>

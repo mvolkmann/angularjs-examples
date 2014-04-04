@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="MLB">
+  <head>
+    <link rel="stylesheet" href="players.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+    <script src="players.js"></script>
+  </head>
+  <body ng-controller="PlayerCtrl">
+    <table>
+      <caption>MLB Players</caption>
+      <thead>
+        <tr>
+          <th ng-repeat="heading in headings">
+            <a href="#" ng-click="sortOn(heading)">{{heading}}</a>
+            <span ng-show="sortHeading === heading && !reverse">&#x25b2;</span>
+            <span ng-show="sortHeading === heading && reverse">&#x25bc;</span>
+          </th>
+        </tr>
+        <tr>
+          <th><input type="text" ng-model="filter.firstName" placeholder="filter"></th>
+          <th><input type="text" ng-model="filter.lastName" placeholder="filter"></th>
+          <th><input type="text" ng-model="filter.teamCity" placeholder="filter"></th>
+          <th><input type="text" ng-model="filter.teamName" placeholder="filter"></th>
+          <th><input type="text" ng-model="minBatAvg" placeholder="filter"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="player in players | filter:filter | filter:baFilter | orderBy:sortKey:reverse">
+          <td ng-repeat="key in keys">{{player[key]}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

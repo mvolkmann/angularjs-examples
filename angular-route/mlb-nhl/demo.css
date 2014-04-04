@@ -1,0 +1,48 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header, footer, nav {
+  background-color: DarkBlue; /* #00008b */
+  color: white;
+  padding: 15px;
+}
+
+header {
+  font-size: 24pt;
+}
+
+section {
+  background-color: White;
+  padding: 19px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  border: solid LightGray 2px; /* #eeeeee */
+  font-size: 10pt;
+  padding: 5px;
+}
+
+th {
+  background-color: #ddddf0; /* overlay of LightGray and DarkBlue from colorblendy.com */
+}
+
+#baseballTable tbody {
+  display: block;
+  height: 200px;
+  overflow-y: scroll;
+}
+
+.tree-leaf {
+  color: blue;
+}
+
+.tree-leaf:hover {
+  text-decoration: underline;
+}

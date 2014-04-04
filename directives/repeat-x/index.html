@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+  <head>
+    <link rel="stylesheet" href="demo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <script src="demo.js"></script>
+    <script src="directives.js"></script>
+  </head>
+  <body ng-controller="DemoCtrl">
+    <h1>Directives Demo</h1>
+    <div repeat-x="3" append="{{message}}">Hello</div>
+    <button ng-click="changeMessage()">Change Message</button>
+  </body>
+</html>

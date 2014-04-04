@@ -1,0 +1,14 @@
+<html ng-app="Demo">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <script src="angular-sanitize.min.js"></script>
+    <script src="demo.js"></script>
+  </head>
+  <body ng-controller="DemoCtrl">
+    <!-- This example applies SCE in a filter. -->
+    <span ng-bind-html="text1 | raw"></span>
+
+    <!-- This example assumes SCE has already been applied. -->
+    <span ng-bind-html="text2"></span>
+  </body>
+</html>

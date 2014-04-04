@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="MLB">
+  <head>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.7/ng-grid.css">
+    <link rel="stylesheet" href="players.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.7/ng-grid.js"></script>
+    <script src="players.js"></script>
+  </head>
+  <body ng-controller="PlayerCtrl">
+    <div class="grid-style" ng-grid="gridOptions"></div>
+    <!--table>
+      <caption>MLB Players</caption>
+      <thead>
+        <tr>
+          <th ng-repeat="heading in headings">
+            <a href="#" ng-click="sortOn(heading)">{{heading}}</a>
+            <span ng-show="sortHeading === heading && !reverse">&#x25b2;</span>
+            <span ng-show="sortHeading === heading && reverse">&#x25bc;</span>
+          </th>
+        </tr>
+        <tr>
+          <th><input type="text" ng-model="filter.firstName" placeholder="filter"></th>
+          <th><input type="text" ng-model="filter.lastName" placeholder="filter"></th>
+          <th><input type="text" ng-model="filter.teamCity" placeholder="filter"></th>
+          <th><input type="text" ng-model="filter.teamName" placeholder="filter"></th>
+          <th><input type="text" ng-model="minBatAvg" placeholder="filter"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="player in players | filter:filter | filter:baFilter | orderBy:sortKey:reverse">
+          <td ng-repeat="key in keys">{{player[key]}}</td>
+        </tr>
+      </tbody>
+    </table-->
+  </body>
+</html>

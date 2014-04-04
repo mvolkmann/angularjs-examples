@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="Repeat">
+  <head>
+    <link rel="stylesheet" href="repeat.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+    <script src="repeat.js"></script>
+  </head>
+  <body ng-controller="RepeatCtrl">
+    <table>
+      <caption>Fruits</caption>
+      <tr>
+        <th>Number</th>
+        <th>Name</th>
+        <th>Color</th>
+        <th>Even?</th>
+      </tr>
+      <!-- The class specified with ng-class-even is used with $even is false! -->
+      <!-- The class specified with ng-class-odd is used with $odd is false! -->
+      <tr ng-repeat="fruit in fruits | orderBy:'name'"
+        ng-class="{first: $first, middle: $middle, last: $last}"
+        ng-class-even="'even'" ng-class-odd="'odd'">
+        <td>{{$index + 1}}</td>
+        <td>{{fruit.name}}</td>
+        <td>{{fruit.color}}</td>
+        <td>{{$even}}</td>
+      </tr>
+    </table>
+  </body>
+</html>

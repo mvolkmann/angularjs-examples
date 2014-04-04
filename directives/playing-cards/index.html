@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="CardGame">
+  <head>
+    <link rel="stylesheet" href="playing-card.css"></script>
+    <link rel="stylesheet" href="cards.css"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-sanitize.min.js"></script>
+    <script src="playing-card.js"></script>
+    <script src="cards.js"></script>
+  </head>
+  <body ng-controller="CardGameCtrl">
+    <h3>Your Hand</h3>
+    <div ng-repeat="card in hand" playing-card="card"></div>
+    <div>
+      <button ng-click="deal()" ng-show="hand.length === 5">Deal</button>
+      <button ng-click="newDeck()">New Deck</button>
+    </div>
+  </body>
+</html>

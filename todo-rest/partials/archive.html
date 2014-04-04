@@ -1,0 +1,8 @@
+<div>
+  <h4>Archived Todos</h4>
+  <ol>
+    <li ng-repeat="todo in archive | objToArr | orderBy:'text'">
+      {{todo.text}}
+    </li>
+  </ol>
+</div>

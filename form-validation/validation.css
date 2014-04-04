@@ -1,0 +1,46 @@
+body {
+  font-family: sans-serif;
+  font-size: 14pt;
+}
+
+button, input {
+  font-size: 14pt;
+}
+
+label {
+  display: inline-block;
+  text-align: right;
+  width: 200px;
+}
+
+/* ng-pristine class doesn't get removed when all content is deleted! */
+input.ng-pristine {
+  background-color: LightGreen;
+}
+
+input.ng-dirty {
+  background-color: LightYellow;
+}
+
+input.ng-invalid {
+  background-color: Pink;
+}
+
+/* Initially, fields are pristine AND valid. */
+/*
+input.ng-valid {
+  background-color: LightBlue;
+}
+*/
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 12pt;
+  margin-top: 20px;
+}
+
+td, th {
+  border: solid gray 1px;
+  padding: 5px;
+}

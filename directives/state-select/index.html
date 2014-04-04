@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html ng-app="Directives">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <script src="state-select.js"></script>
+  </head>
+  <body>
+    <h3>Select State</h3>
+    <div ng-controller="AddressCtrl">
+      <state-select ng-model="address.state"></state-select>
+      <div>You selected {{address.state}}.</div>
+    </div>
+  </body>
+</html>
+

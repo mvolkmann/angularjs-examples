@@ -1,0 +1,42 @@
+body {
+  font-family: sans-serif;
+}
+
+caption {
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+label {
+  color: blue;
+  display: inline-block;
+  font-weight: bold;
+  text-align: right;
+  width: 60px;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 10px 0;
+}
+
+td:nth-child(2) {
+  text-align: right;
+}
+
+td:nth-child(3), td:nth-child(4) {
+  text-align: center;
+}
+
+td, th {
+  border: solid gray 1px;
+  padding: 5px;
+}
+
+th {
+  background-color: LightSalmon;
+}
+
+input.ng-dirty.ng-invalid {
+  border: solid red 1px;
+}

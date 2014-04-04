@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+  <head>
+    <title>AngularJS color-picker directive</title>
+    <link rel="stylesheet" href="color-picker.css">
+    <link rel="stylesheet" href="demo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js">
+    </script>
+    <script src="color-picker.js"></script>
+    <script src="demo.js"></script>
+  </head>
+  <body ng-controller="DemoCtrl">
+    <h1>Color Picker Demo</h1>
+    <rmv-color-picker ng-model="myColor">
+    </rmv-color-picker>
+    <div ng-style="textStyle">
+      This text will be in the selected color.
+    </div>
+    <button ng-click="goToYellow()">Yellow</button>
+  </body>
+</html>

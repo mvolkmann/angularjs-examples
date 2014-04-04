@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+  <head>
+    <link rel="stylesheet" href="demo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+    <script src="demo.js"></script>
+  </head>
+  <body ng-controller="DemoCtrl">
+    <form name="orderForm">
+      <div>
+        <label>Item:</label>
+        <input id="description" name="description" type="text"
+          autofocus ng-model="description" required>
+      </div>
+      <div>
+        <label>Price:</label>
+        <input name="price" type="number" ng-model="price" required>
+        <span ng-show="orderForm.price.$dirty && orderForm.price.$invalid">
+          enter a number
+        </span>
+      </div>
+      <div>
+        <label></label>
+        <button ng-click="addToCart()" ng-disabled="orderForm.$invalid">
+          Add To Cart
+        </button>
+      </div>
+    </form>
+    <div ng-show="cart.length > 0">
+      <table>
+        <caption>Cart</caption>
+        <tr>
+          <th>Item</th><th>Price</th>
+          <th>Increase</th><th>Decrease</th>
+        </tr>
+        <tr ng-repeat="item in cart">
+          <td>{{item.description}}</td>
+          <td>${{item.price}}</td>
+          <td><button ng-click="inc(item)">+</button></td>
+          <td><button ng-click="dec(item)"
+            ng-disabled="item.price === 0">-</button></td>
+        </tr>
+      </table>
+      <label>Total</label> ${{total}}
+    </div>
+  </body>
+</html>

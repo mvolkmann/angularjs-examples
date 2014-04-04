@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+  <head>
+    <title>AngularJS $resource Demo</title>
+    <link rel="stylesheet" href="demo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-resource.min.js"></script>
+    <script src="demo.js"></script>
+  </head>
+  <body ng-controller="DemoCtrl">
+    <h3>AngularJS $resource Demo</h3>
+    <div id="list">
+      <div ng-repeat="(index, contact) in contacts">
+        <!-- The links aren't underlined without href attribute. -->
+        <a href="" ng-click="getContact(index)">{{contact.name}}</a>
+      </div>
+    </div>
+    <div id="form">
+      <div>
+        <label>Name:</label>
+        <!-- This input has an id so we can set focus on it. -->
+        <input id="name" type="text" ng-model="contact.name">
+      </div>
+      <div>
+        <label>Email:</label>
+        <input type="text" ng-model="contact.email">
+      </div>
+      <div>
+        <label>Mobile:</label>
+        <input type="text" ng-model="contact.mobile">
+      </div>
+
+      <button ng-show="existingContact" ng-click="newContact()">New</button>
+      <button ng-disabled="!contact.name" ng-hide="existingContact"
+        ng-click="createContact()">Add</button>
+      <button ng-disabled="!existingContact" ng-click="updateContact()">Update</button>
+      <button ng-disabled="!existingContact" ng-click="deleteContact()">Delete</button>
+      <br/>
+
+      <!-- This just tests the custom $resource action "getPaged".
+           It causes the list of contacts on the left
+           to only contain the 2nd and 3rd contacts. -->
+      <button ng-click="getPaged()">Get Paged</button>
+    </div>
+  </body>
+</html>

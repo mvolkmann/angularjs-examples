@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    <script src="demo.js"></script>
+  </head>
+  <body ng-controller="DemoCtrl">
+    <div>
+      <label>Text</label>
+      <input type="text" ng-model="text">
+      {{text}}
+      {{text.toUpperCase()}}
+    </div>
+    <div>
+      <button ng-click="getStuff()">Press Me</button> baz = {{foo.bar.baz}}
+    </div>
+    <div>
+      <input type="checkbox" ng-model="box">
+    </div>
+    <div>
+      <input name="station" type="radio" ng-model="station">KTRS
+      <input name="station" type="radio" ng-model="station">NPR
+      {{station}}
+    </div>
+    <div>
+      <select ng-model="color">
+        <option>Red</option>
+        <option>Green</option>
+        <option>Blue</option>
+      </select>
+    </div>
+  </body>
+</html>

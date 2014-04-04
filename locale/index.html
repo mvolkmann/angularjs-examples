@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    <script src="tmhDynamicLocale.js"></script>
+    <script src="locale.js"></script>
+    <script src="demo.js"></script>
+  </head>
+  <body>
+    <h2>i18n and L10n Demo</h2>
+    <div ng-controller="DemoCtrl">
+      <div>
+        <label>{{'Language' | L10n}}:</label>
+        <select ng-model="lang">
+          <option value="en">English</option>
+          <option value="fr">French</option>
+          <option value="es">Spanish</option>
+        </select>
+      </div>
+      <div><label>{{'Big Number' | L10n}}:</label> {{bigNumber | number}}</div>
+      <div><label>{{'Price' | L10n}}:</label> {{price | currency}}</div>
+      <div><label>{{'Birthday' | L10n}}:</label> {{birthday | date}}</div>
+      <div><label>{{'Lunch Time' | L10n}}:</label> {{lunchTime | date:'h:mm a'}}</div>
+    </div> 
+  </body>
+</html>

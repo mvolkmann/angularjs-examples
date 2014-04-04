@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="KarmaDemo">
+  <head>
+    <link rel="stylesheet" href="styles/karma-demo.css">
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="scripts/karma-demo.js"></script>
+  </head>
+  <body>
+    <h1>Karma Demo</h1>
+    <div ng-controller="DemoCtrl">
+      <div>
+        Number:
+        <span even-odd-class="foo,bar">
+          {{number | asWord}}
+        </span>
+      </div>
+      <button id="inc-btn" ng-click="increment()">
+        Increment
+      </button>
+      <address-label address="myAddress">
+      </address-label>
+    </div>
+    <div id="footer" ng-view="footer"></div>
+  </body>
+</html>

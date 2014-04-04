@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    <script src="demo2.js"></script>
+  </head>
+  <body ng-controller="DemoCtrl">
+    Fruit:
+    <select ng-model="selectedFruit"
+      ng-options="fruit as fruit.name for fruit in fruitArr | orderBy:'name'">
+    </select>
+  </body>
+</html>

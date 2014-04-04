@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="Weather">
+  <head>
+    <title>Weather</title>
+    <meta charset='utf-8'/>
+    <link rel="stylesheet" href="styles/weather.css"/>
+    <script src="http://localhost:35729/livereload.js"></script>
+    <script src="http://code.angularjs.org/1.2.3/angular.js"></script>
+    <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
+    <script src="scripts/weather.js"></script>
+  </head>
+  <body>
+    <h1>Weather</h1>
+    <div id="links">
+      <!-- ui-sref values are state names, not paths -->
+      <a ui-sref="hourly">Hourly Forecast</a>
+      <a ui-sref="daily">5-day Forecast</a>
+    </div>
+    <div ui-view></div>
+  </body>
+</html>

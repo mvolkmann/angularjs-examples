@@ -1,0 +1,11 @@
+body {
+  font-family: sans-serif;
+}
+
+label {
+  display: inline-block;
+  font-weight: bold;
+  margin-right: 5px;
+  text-align: right;
+  width: 170px;
+}

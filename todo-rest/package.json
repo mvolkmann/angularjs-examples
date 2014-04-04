@@ -1,0 +1,16 @@
+{
+  "name": "todo-rest",
+  "version": "0.0.0",
+  "description": "",
+  "main": "server-old.js",
+  "dependencies": {
+    "express": "~3.3.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

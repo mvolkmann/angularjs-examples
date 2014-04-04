@@ -1,0 +1,28 @@
+input {
+  width: 150px;
+}
+
+label {
+  display: inline-block;
+  font-weight: normal;
+  text-align: right;
+  width: 50px;
+}
+
+.color-picker {
+  width: 320px;
+}
+
+.color-picker-sliders {
+  display: inline-block;
+  margin: 10px;
+}
+
+.color-picker-swatch {
+  border: solid black 1px;
+  display: inline-block;
+  height: 74px;
+  padding: 5px;
+  vertical-align: top;
+  width: 74px;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+  </head>
+  <body>
+    <div>
+      Enter your favorite colors separated by commas.<br>
+      <input type="text" size=30 autofocus ng-list ng-model="colors">
+    </div>
+    <ng-pluralize count="colors ? colors.length : 0"
+      when="{
+        '0': 'No colors have been entered.',
+        'one': 'You only like one color.',
+        'other': 'You like {} colors.'
+      }">
+    </ng-pluralize>
+    <br>
+    <ng-pluralize count="colors.length" offset=2
+      when="{
+        '0': 'No colors have been entered.',
+        '1': 'You like {{colors[0]}}.',
+        '2': 'You like {{colors[0]}} and {{colors[1]}}.',
+        'one': 'You like {{colors[0]}}, {{colors[1]}}, and one other color.',
+        'other': 'You like {{colors[0]}}, {{colors[1]}}, and {} other colors.'
+      }">
+    </ng-pluralize>
+  </body>
+</html>

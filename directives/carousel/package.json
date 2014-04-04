@@ -1,0 +1,16 @@
+{
+  "name": "carousel",
+  "version": "0.0.0",
+  "description": "",
+  "main": "carousel.js",
+  "dependencies": {
+    "express": "~3.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

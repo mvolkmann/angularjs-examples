@@ -1,0 +1,72 @@
+[
+  {
+    "firstName": "Miguel",
+    "lastName": "Cabrera",
+    "teamCity": "Detroit",
+    "teamName": "Tigers",
+    "battingAvg": 0.348
+  },
+  {
+    "firstName": "Joe",
+    "lastName": "Mauer",
+    "teamCity": "Minnesota",
+    "teamName": "Twins",
+    "battingAvg": 0.324
+  },
+  {
+    "firstName": "Mike",
+    "lastName": "Trout",
+    "teamCity": "Los Angeles",
+    "teamName": "Angels",
+    "battingAvg": 0.323
+  },
+  {
+    "firstName": "Adrian",
+    "lastName": "Beltre",
+    "teamCity": "Texas",
+    "teamName": "Rangers",
+    "battingAvg": 0.315
+  },
+  {
+    "firstName": "Robinson",
+    "lastName": "Cano",
+    "teamCity": "New York",
+    "teamName": "Yankees",
+    "battingAvg": 0.314
+  },
+  {
+    "firstName": "Michael",
+    "lastName": "Cuddyer",
+    "teamCity": "Colorado",
+    "teamName": "Rockies",
+    "battingAvg": 0.331
+  },
+  {
+    "firstName": "Chris",
+    "lastName": "Johnsom",
+    "teamCity": "Atlanta",
+    "teamName": "Braves",
+    "battingAvg": 0.321
+  },
+  {
+    "firstName": "Freddie",
+    "lastName": "Freeman",
+    "teamCity": "Atlanta",
+    "teamName": "Braves",
+    "battingAvg": 0.319
+  },
+  {
+    "firstName": "Yadier",
+    "lastName": "Molina",
+    "teamCity": "St. Louis",
+    "teamName": "Cardinals",
+    "battingAvg": 0.319
+  },
+  {
+    "firstName": "Jayson",
+    "lastName": "Werth",
+    "teamCity": "Washington",
+    "teamName": "Nationals",
+    "battingAvg": 0.318
+  }
+]

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+  <head>
+    <link rel="stylesheet" href="demo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+    <script src="event-directives.js"></script>
+    <script src="demo.js"></script>
+  </head>
+  <body ng-controller="DemoCtrl">
+    <label>Age</label>
+    <input type="text" digits-only ng-model="age" autofocus>
+    <!-- Could also use type="number". -->
+    <div>Age is {{age}}.</div>
+
+    <div class="box" hover-color="pink">Hover over me!</div>
+  </body>
+</html>

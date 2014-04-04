@@ -1,0 +1,33 @@
+{
+  "name": "basic",
+  "version": "0.0.0",
+  "description": "demo of using AngularJS with ui-router",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "AngularJS",
+    "ui-router"
+  ],
+  "author": "R. Mark Volkmann",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-csslint": "~0.1.2",
+    "grunt-contrib-jshint": "~0.7.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-html": "~0.3.4",
+    "matchdep": "~0.3.0"
+  },
+  "dependencies": {
+    "grunt-contrib-csslint": "~0.1.2",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-html": "~0.3.4",
+    "grunt-contrib-jshint": "~0.7.1",
+    "matchdep": "~0.3.0"
+  }
+}

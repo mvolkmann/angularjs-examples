@@ -1,0 +1,24 @@
+<html ng-app="Demo">
+  <head>
+    <title>AngularJS dialog directive</title>
+    <link rel="stylesheet"
+      href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="demo.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js">
+    </script>
+    <script src="demo.js"></script>
+    <script src="dialog.js"></script>
+  </head>
+  <body ng-controller="DemoCtrl" ng-style="bodyStyle">
+    <h1>Dialog Demo</h1>
+    <button class="btn btn-default" data-toggle="modal" data-target="#myDialog">
+      Change Background ...
+    </button>
+    <rmv-dialog id="myDialog" title="Background Color" btn-map="myBtnMap">
+      Choose a background color from the buttons below.
+    </rmv-dialog>
+  </body>
+</html>

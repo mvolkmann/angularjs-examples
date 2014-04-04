@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    <script src="demo.js"></script>
+  </head>
+  <body>
+    <div ng-controller="DemoCtrl">
+      <div>
+        <label>Color:</label>
+        <select ng-model="color">
+          <option>Red</option>
+          <option>Green</option>
+          <option>Blue</option>
+        </select>
+      </div>
+      <div>{{'static text' | myFilter}}</div>
+    </div> 
+  </body>
+</html>

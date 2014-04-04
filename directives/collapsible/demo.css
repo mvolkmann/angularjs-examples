@@ -1,0 +1,22 @@
+.collapsible {
+  background-color: linen;
+  border: solid gray 1px;
+  border-radius: 10px;
+  font-family: sans-serif;
+  padding: 10px;
+  width: 250px;
+}
+
+.collapsible-body {
+  -webkit-transition: all 1s;
+}
+
+.collapsible-title {
+  background-color: LightSalmon;
+  font-size: 14pt;
+  margin-bottom: 5px;
+}
+
+.collapsible-triangle {
+  float: right;
+}

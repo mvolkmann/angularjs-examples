@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app="Filters">
+  <head>
+    <link rel="stylesheet" href="filters.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    <script src="filters.js"></script>
+  </head>
+  <body>
+    <h2>Filters</h2>
+    <div ng-controller="FilterCtrl">
+      <div>
+        <label>Price:</label>
+        <span>{{price | currency}}</span>
+      </div>
+      <div>
+        <label>Date:</label>
+        <span>{{now | date:'shortDate'}}</span>
+        <span>{{now.getTime() | date:'shortDate'}}</span>
+        <!-- can specify many formatting options after date: -->
+      </div>
+      <div>
+        <label>Colors with r:</label>
+        <span ng-repeat="color in colors | filter:'r'">
+          <!-- make case insensitive with filter:'r':false -->
+          {{color}}
+        </span>
+      </div>
+      <div>
+        <label>Long colors:</label>
+        <span ng-repeat="color in colors | filter:longString">
+          {{color}}
+        </span>
+      </div>
+      <div>
+        <label>Medium balls:</label>
+        <span ng-repeat="ball in balls | filter:{size: 'medium'}">
+          {{ball.sport}}
+        </span>
+      </div>
+      <div>
+        <label>JSON colors:</label>
+        <span>{{colors | json}}</span>
+      </div>
+      <div>
+        <label>First 3 colors:</label>
+        <span ng-repeat="color in colors | limitTo:3">
+          {{color}}
+        </span>
+      </div>
+      <div>
+        <label>Topic lower:</label>
+        <span>{{topic | lowercase}}</span>
+      </div>
+      <div>
+        <label>Topic upper:</label>
+        <span>{{topic | uppercase}}</span>
+      </div>
+      <div>
+        <label>Pi times one million:</label>
+        <span>{{bigPi | number:3}}</span>
+      </div>
+      <div>
+        <label>Sorted colors:</label>
+        <span ng-repeat="color in colors | orderBy:identity">
+          {{color}}
+        </span>
+      </div>
+      <div>
+        <label>Reverse sorted balls:</label>
+        <span ng-repeat="ball in balls | orderBy:[-'sport']">
+          {{ball.sport}}
+        </span>
+      </div>
+      <div>
+        <label>Sorted balls by size then color:</label>
+        <span ng-repeat="ball in balls | orderBy:['size', 'color']">
+          {{ball.sport}}:{{ball.size}}:{{ball.color}}&nbsp;
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

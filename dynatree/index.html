@@ -1,0 +1,34 @@
+<html ng-app="MyApp">
+  <head>
+    <title>AngularJS Dynatree</title>
+
+    <link rel="stylesheet" href="lib/jquery.dynatree-1.2.5-rc4-all/dist/skin/ui.dynatree.css"/>
+
+    <script src="lib/jquery.dynatree-1.2.5-rc4-all/jquery/jquery.min.js"></script>
+    <script src="lib/jquery.dynatree-1.2.5-rc4-all/jquery/jquery-ui.custom.min.js"></script>
+    <script src="lib/jquery.dynatree-1.2.5-rc4-all/dist/jquery.dynatree.min.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="demo.js"></script>
+    <script src="dynatree-directive.js"></script>
+  </head>
+  <body ng-controller="MyCtrl">
+    <h1>AngularJS Dynatree</h1>
+    
+    <!--
+      The dynatree directive can be used as an attribute or an element.
+      initial-nodes must be set to the name of a function on the controller
+      that returns an array of node objects.
+      child-nodes must be set to the name of a function on the controller
+      that takes a node object and returns an array of child node objects.
+      activate must be set to the name of a function on the controller
+      that is passed a node when one is selected.
+    -->
+    <!--div dynatree-->
+    <dynatree
+      initial-nodes="getLeagues"
+      child-nodes="getChildNodes"
+      activate="selected">
+    </dynatree>
+    <!--/div-->
+  </body>
+</html>

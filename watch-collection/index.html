@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+    <script src="demo.js"></script>
+  </head>
+  <body ng-controller="DemoCtrl">
+    <form>
+      <label>Number:</label>
+      <input type="number" autofocus ng-model="n">
+      <button ng-click="push()">Push</button>
+    </form>
+    <div>
+      <label>Array:</label> {{arr}}
+    </div>
+    <div>
+      <label>Sum:</label> {{sum}}
+    </div>
+  </body>
+</html>

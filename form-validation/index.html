@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+  <head>
+    <link rel="stylesheet" href="validation.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+    <script src="validation.js"></script>
+  </head>
+  <body>
+    <form name="myForm" ng-controller="MyCtrl">
+      <div>
+        <label>First Name</label>
+        <!-- Al matches -->
+        <input type="text" name="firstName" ng-model="firstName"
+          ng-minlength="2" ng-maxlength="10" required>
+        <span ng-show="myForm.firstName.$error.minlength">too short</span>
+        <span ng-show="myForm.firstName.$error.maxlength">too long</span>
+        <span ng-show="myForm.firstName.$error.required">first name is required</span>
+      </div>
+
+      <div>
+        <label>Pattern (letter, digit)</label>
+        <!-- a1 matches -->
+        <input type="text" name="letterDigit" size="2" ng-model="charDigit"
+        ng-pattern="/^[A-Z,a-z]{1}\d$/">
+        <span ng-show="myForm.letterDigit.$error.pattern">regex fail</span>
+      </div>
+
+      <div>
+        <label>Score (3-10)</label>
+        <input type="number" name="score" ng-model="score" min="3" max="10" required>
+        <!-- The following should appear when a non-number is entered,
+             but it is broken in AngularJS. -->
+        <span ng-show="myForm.score.$error.number">not a number</span>
+        <!--span ng-show="myForm.score.$error.pattern">not a number</span-->
+        <!-- $valid and $invalid aren't getting set either! -->
+        <span>valid = {{myForm.score.$valid}}</span>
+        <span>invalid = {{myForm.score.$invalid}}</span>
+        <span ng-show="myForm.score.$error.min">too low</span>
+        <span ng-show="myForm.score.$error.max">too high</span>
+      </div>
+
+      <div>
+        <label>Email</label>
+        <input type="email" name="email" ng-model="email">
+        <!-- a@b.cd matches -->
+        <span ng-show="myForm.email.$error.email">invalid email</span>
+      </div>
+
+      <div>
+        <label>Home Page</label>
+        <!-- http://a matches -->
+        <input type="url" name="homePage" size="40" ng-model="homePage">
+        <span ng-show="myForm.homePage.$error.url">invalid url</span>
+      </div>
+
+      <button ng-disabled="myForm.$invalid" type="submit">Submit</button>
+      <button ng-click="dump()">Dump</button>
+
+      <table>
+        <caption>Form Status</caption>
+        <tr>
+          <th>$valid</th><td>{{myForm.$valid}}</td>
+        </tr>
+        <tr>
+          <th>$invalid</th><td>{{myForm.$invalid}}</td>
+        </tr>
+        <tr>
+          <th>$pristine</th><td>{{myForm.$pristine}}</td>
+        </tr>
+        <tr>
+          <th>$dirty</th><td>{{myForm.$dirty}}</td>
+        </tr>
+        <tr>
+          <th>$error</th><td>{{myForm.$error}}</td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

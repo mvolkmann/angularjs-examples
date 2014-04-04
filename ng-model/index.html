@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+    <script src="demo.js"></script>
+  </head>
+  <body ng-controller="DemoCtrl">
+    <div>
+      <label>Text</label>
+      <input type="text" ng-model="text">
+    </div>
+    <input type="number" autofocus ng-model="n1"> +
+    <input type="number" ng-model="n2">
+    = {{sum()}}
+  </body>
+</html>

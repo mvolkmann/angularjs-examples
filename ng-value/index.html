@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+    <script src="demo.js"></script>
+  </head>
+  <body ng-controller="DemoCtrl">
+    <label>Color: </label>
+    <label ng-repeat="color in colors" for="{{color}}">
+      {{color}}
+      <input id="{{color}}" type="radio" ng-value="color" ng-model="favorite.color">
+    </label>
+    <div>
+      You selected {{favorite.color}}.
+    </div>
+    <div>
+      <label>New Color:</label>
+      <input type="text" ng-model="newColor">
+      <button ng-click="addColor()" ng-disabled="!newColor">Add</button>
+    </div>
+    <div>{{errorMessage}}</div>
+  </body>
+</html>

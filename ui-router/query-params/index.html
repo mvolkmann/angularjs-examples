@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html ng-app="DemoApp">
+  <head>
+    <script src="http://code.angularjs.org/1.2.3/angular.js"></script>
+    <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body ng-controller="DemoCtrl">
+    <h1>ui-router Demo</h1>
+    <a ui-sref="one">One</a>
+    <a ui-sref="two">Two</a>
+    <div ui-view>no state selected</div>
+  </body>
+</html>

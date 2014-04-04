@@ -1,0 +1,20 @@
+<div class="color-picker">
+  <div class="color-picker-sliders">
+    <div>
+      <label>Red</label>
+      <!-- range inputs are not supported yet in Firefox or IE. -->
+      <input type="range" min="0" max="255" ng-model="color.red">
+    </div>
+    <div>
+      <label>Green</label>
+      <input type="range" min="0" max="255" ng-model="color.green">
+    </div>
+    <div>
+      <label>Blue</label>
+      <input type="range" min="0" max="255" ng-model="color.blue">
+    </div>
+  </div>
+  <div class="color-picker-swatch" ng-style="swatchStyle">
+    Sample
+  </div>
+</div>

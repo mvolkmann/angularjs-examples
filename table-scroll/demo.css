@@ -1,0 +1,25 @@
+table {
+  border-collapse: collapse;
+}
+
+tbody {
+  height: 100px;
+  overflow: auto;
+}
+
+td, th {
+  border: solid LightGray 1px;
+  padding: 10px;
+  width: 100px;
+}
+
+th {
+  background-color: DarkSalmon;
+}
+
+thead > tr, tbody {
+  /* This allows columns in body to have
+     different widths than columns in head!
+     To fix this, assign a fixed width to each column. */
+  display: block;
+}

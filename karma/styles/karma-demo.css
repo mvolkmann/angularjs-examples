@@ -1,0 +1,19 @@
+body {
+  font-family: sans-serif;
+}
+
+.address {
+  border: solid blue 3px;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  width: 200px;
+}
+
+.foo {
+  color: green;
+}
+
+.bar {
+  color: red;
+}

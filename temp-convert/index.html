@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="Temperature">
+  <head>
+    <style>
+      input.ng-invalid {
+        background-color: pink;
+      }
+      label {
+        display: inline-block;
+        text-align: right;
+        width: 100px;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script>
+      var app = angular.module('Temperature', []);
+      app.controller('TemperatureCtrl', function ($scope) {
+        $scope.f = 32;
+        $scope.c = 0;
+      });
+    </script>
+  </head>
+  <body>
+    <form name="myForm" ng-controller="TemperatureCtrl">
+      <div>
+        <label>Fahrenheit</label>
+        <input type="number" name="fahrenheit" ng-model="f">
+        = {{((f - 32) * 5/9).toFixed(1)}} Celsius
+      </div>
+      <div>
+        <label>Celsius</label>
+        <input type="number" name="celsius" ng-model="c">
+        = {{(c * 9/5 + 32).toFixed(1)}} Fahrenheit
+        <span ng-show="myForm.celsius.$error.number">not a number</span>
+      </div>
+    </form>
+  </body>
+</html>

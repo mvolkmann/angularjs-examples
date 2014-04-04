@@ -1,0 +1,46 @@
+body {
+  font-family: sans-serif;
+}
+
+caption {
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th {
+  background-color: orange;
+}
+
+td, th {
+  border: solid black 2px;
+  padding: 5px;
+}
+
+td:first-child {
+  text-align: right;
+}
+
+.first {
+  color: red;
+}
+
+.last {
+  color: blue;
+}
+
+.middle {
+  color: green;
+}
+
+.even {
+  background-color: LightGray;
+}
+
+.odd {
+  background-color: LightYellow;
+}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+  </head>
+  <body ng-init="a = 1; b = 2; someStyle = {color: 'red'}">
+    <div>
+      Without ng-non-bindable,
+      <span ng-style="someStyle">{{a}} + {{b}} = {{a + b}}</span>
+    </div>
+    <div ng-non-bindable>
+      With ng-non-bindable,
+      <span ng-style="someStyle">{{a}} + {{b}} = {{a + b}}</span>
+    </div>
+  </body>
+</html>

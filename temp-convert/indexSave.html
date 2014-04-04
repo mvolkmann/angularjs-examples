@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <label>Farenheit</label>
+      <input type="text" ng-model="fahrenheit" ng-model="f">
+      f = {{f}}
+      <!--, celcius is {{5/9 * (f - 32)}}-->
+    </div>
+    <div>
+      <label>Celcius</label>
+      <input type="text" ng-model="celcius" ng-model="c">
+      c = {{c}}
+      <!-- , farenheit is {{9/5 * (c + 32)}} -->
+    </div>
+  </body>
+</html>

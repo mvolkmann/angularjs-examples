@@ -1,0 +1,34 @@
+body {
+  font-family: sans-serif;
+}
+
+caption {
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+table {
+  background-color: Linen;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th {
+  background-color: LightSalmon;
+  height: 24px;
+}
+
+td, th {
+  border: solid black 2px;
+  padding: 5px;
+}
+
+td:last-child {
+  text-align: right;
+}
+
+.grid-style {
+  border: solid gray 1px;
+  width: 100%;
+  height: 400px;
+}
