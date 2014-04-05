@@ -1,0 +1,24 @@
+{
+  "name": "mlb-nhl",
+  "version": "0.0.0",
+  "description": "This demo uses a local server implemented with Node.js.",
+  "main": "baseball.js",
+  "dependencies": {
+    "express": "~3.2.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mvolkmann/angularjs-demos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mvolkmann/angularjs-demos/issues"
+  },
+  "homepage": "https://github.com/mvolkmann/angularjs-demos"
+}

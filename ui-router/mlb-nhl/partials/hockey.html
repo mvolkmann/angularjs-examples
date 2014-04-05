@@ -1,0 +1,25 @@
+<div id="hockeyTree" class="css-treeview" ng-controller="HockeyCtrl" ng-cloak>
+  <ul>
+    <li ng-repeat="(conference, divisions) in conferences | orderBy:'conference'">
+      <input id="{{conference}}" type="checkbox"/>
+      <label for="{{conference}}">{{conference}}</label>
+
+      <ul>
+        <li ng-repeat="(division, teams) in divisions | orderBy:'division'">
+          <input id="{{division}}" type="checkbox"/>
+          <label for="{{division}}">{{division}}</label>
+
+          <ul>
+            <!-- It seems that orderBy does not work here! -->
+            <li ng-repeat="(name, city) in teams | orderBy:'city'">
+              <div class="tree-leaf" id="{{team}}" ng-click="teamClicked($event)">
+                <span class="team-city">{{city}}</span>
+                <span class="team-name">{{name}}</span>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

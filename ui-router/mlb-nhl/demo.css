@@ -1,0 +1,65 @@
+body {
+  overflow-y: hidden;
+}
+
+footer {
+  background-color: DarkBlue; /* #00008b */
+  border-radius: 10px;
+  color: white;
+  font-style: italic;
+  padding: 10px;
+  margin-top: 25px;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td, th {
+  border: solid LightGray 2px; /* #eeeeee */
+  padding: 5px;
+}
+
+th {
+  background-color: #ddddf0; /* overlay of LightGray and DarkBlue from colorblendy.com */
+}
+
+#baseballTable tbody {
+  display: block;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+#center {
+  height: 400px;
+  margin-left: 20px;
+}
+
+#hockeyTree {
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.hero-unit {
+  padding: 30px;
+}
+
+.jumbotron {
+  margin-bottom: 0;
+}
+
+.logo {
+  height: 110px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.tree-leaf {
+  color: blue;
+}
+
+.tree-leaf:hover {
+  text-decoration: underline;
+}
