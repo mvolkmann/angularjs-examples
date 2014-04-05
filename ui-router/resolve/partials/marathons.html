@@ -1,0 +1,20 @@
+<table>
+  <caption>Marathons</caption>
+  <tr>
+    <th>Name</th>
+    <th>State</th>
+    <th>Month</th>
+  </tr>
+  <tr ng-repeat="marathon in marathons">
+    <td>{{marathon.name}}</td>
+    <td>{{marathon.state}}</td>
+    <td>{{marathon.month}}</td>
+  </tr>
+</table>
+
+<h4>Famous Marathon Runners</h4>
+<ul>
+  <li ng-repeat="runner in runners">
+    {{runner.lastName}}, {{runner.firstName}}
+  </li>
+</ul>
