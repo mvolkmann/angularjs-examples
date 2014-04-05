@@ -1,0 +1,19 @@
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  background-color: orange;
+  padding: 10px;
+  margin: 0;
+}
+
+#item {
+  border-top: solid orange 1px;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+#menus {
+  font-size: 8pt;
+}

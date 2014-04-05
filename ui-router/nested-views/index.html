@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="Diner">
+  <head>
+    <title>AngularJS ui-router sibling view demo</title>
+    <meta charset='utf-8'/>
+    <link rel="stylesheet" href="styles/diner.css"/>
+    <script src="http://localhost:35729/livereload.js"></script>
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script>
+    <script src="scripts/diner.js"></script>
+  </head>
+  <body ng-controller="DinerCtrl">
+    <h1>Welcome to the {{name}} Diner!</h1>
+
+    <div id="menus">
+      Menus:
+      <!-- ui-sref values are state names, not paths -->
+      <a ui-sref="breakfast">Breakfast</a>
+      <a ui-sref="lunch">Lunch</a>
+      <a ui-sref="dinner">Dinner</a>
+    </div>
+
+    <div id="menu" ui-view></div>
+  </body>
+</html>
