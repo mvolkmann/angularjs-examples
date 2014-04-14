@@ -1,65 +1,53 @@
 .carousel {
   width: 600px;
 }
-
-.carousel-main {
+.carousel .carousel-img {
+  height: 200px;
+  position: absolute;
+  transition: all 1s ease-in-out;
+}
+.carousel .carousel-main {
   height: 200px;
   margin: 0 auto 2px auto;
   overflow: hidden;
   position: relative;
-  width: 300px;
+  width: 600px;
 }
-
-.carousel-img {
-  height: 200px;
-  position: absolute;
-  transition: all 1.0s ease-in-out;
-}
-
-.carousel .thumbs {
-  background-color: #a6adb6;
-  text-align: center;
-}
-
-.carousel .thumbs div {
-  display: inline-block;
-}
-
-/* Avoiding class name "thumbnail" because Twitter Bootstrap defines that. */
 .carousel .carousel-thumb {
   height: 73px;
   vertical-align: top;
 }
-
-.carousel .left-arrow, .carousel .right-arrow {
-  vertical-align: 26px;
+.carousel .left-arrow,
+.carousel .right-arrow {
+  vertical-align: 42px;
 }
-
-.thumb-batch {
+.carousel .thumb-batch {
   position: absolute;
-  transition: all 1.0s ease-in-out;
+  transition: all 1s ease-in-out;
 }
-
-.thumb-batch > div {
+.carousel .thumb-batch > div {
   height: 73px;
   margin: 6px;
   overflow: hidden;
   width: 88px;
 }
-
-.thumbs-inner {
+.carousel .thumbs {
+  background-color: #a6adb6;
+  text-align: center;
+}
+.carousel .thumbs div {
+  display: inline-block;
+}
+.carousel .thumbs-inner {
   height: 90px;
   overflow: hidden;
   position: relative;
   width: 500px;
 }
-
-.thumbs-inner img {
+.carousel .thumbs-inner img {
   border-top: solid transparent 3px;
-  height: 100%
+  height: 100%;
 }
-
-.thumbs-inner img.current-image {
+.carousel .thumbs-inner img.current-image {
   border-top: solid blue 3px;
 }
-

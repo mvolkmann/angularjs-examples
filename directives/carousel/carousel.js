@@ -1,244 +1,221 @@
-/*global angular: false */
-/*eslint no-use-before-define: 0 */
 (function () {
   'use strict';
+  /*global angular: false */
 
   var module = angular.module('MyDirectives', []);
 
   function link(scope, $interval) {
-    var batchDiv, batchImages, batchIndex = 0, batchNumber = 0,
-      count, currImg, currWidth, imagesPerBatch, innerDiv, mainDiv,
+    var imageCount = scope.images.length,
+      imagesPerBatch = Number(scope.imagesPerBatch) || 5,
+      thumbImgs = [],
       timerReset = false;
+
+    // This is a "descriptor" object for the full-size images
+    // that display at the top.
+    var fullDesc = {
+      parentElement: document.querySelector('.carousel-main'),
+      currentElement: null,
+      elementArray: [],
+      index: 0
+    };
+
+    // This is a "descriptor" object for the thumbnail images
+    // that display at the bottom.
+    var thumbDesc = {
+      parentElement: document.querySelector('.thumbs-inner'),
+      currentElement: null,
+      elementArray: [],
+      index: 0
+    };
 
     // The following functions are nested inside the link function
     // so they can share its local variables.
 
+    // Advances to the next image.
     function advance() {
       if (timerReset) {
         timerReset = false;
         return;
       }
 
-      var newBatch = false;
+      // Remove selection indicator from current thumbnail.
+      thumbImgs[fullDesc.index].className = 'carousel-thumb';
 
-      scope.index++;
-      if (scope.index === count) {
+      // Advance to the next image.
+      fullDesc.index++;
+
+      // Determine if we need to advance to the next batch.
+      var newBatch = false;
+      if (fullDesc.index === imageCount) {
         // This is the last image.
-        batchNumber = 0;
+        fullDesc.index = thumbDesc.index = 0;
         newBatch = true;
-      } else if (scope.index % imagesPerBatch === 0) {
+      } else if (fullDesc.index % imagesPerBatch === 0) {
         // This is the first image in a new batch.
-        batchNumber++;
+        thumbDesc.index++;
         newBatch = true;
       }
 
-      // Remove selection indicator from current thumbnail.
-      batchImages[batchIndex].className = 'carousel-thumb';
+      showFull();
 
       if (newBatch) {
-        makeBatch();
+        showBatch();
       } else {
-        batchIndex++; // advance to next thumbnail in current batch
         // Add selection indicator to new thumbnail.
-        batchImages[batchIndex].className += ' current-image';
-        updateFullImage();
-      }
-    }
-
-    function createFirstImage() {
-      // Create the first img element.
-      currImg = makeFullImage();
-
-      // After the image has loaded ...
-      currImg.onload = function () {
-        // Place the image at the starting location.
-        currImg.style.left = '0px';
-        mainDiv.appendChild(currImg);
-
-        // Record its width so the next image
-        // can be placed to the right of it.
-        currWidth = currImg.width;
-      };
-
-      // Start loading the first image.
-      loadFullImage(currImg);
-    }
-
-    function loadFullImage(img) {
-      var obj = scope.images[scope.index];
-      img.src = obj.full;
-      if (obj.url) {
-        img.onclick = function () {
-          window.open(obj.url, '_blank');
-        };
+        thumbImgs[fullDesc.index].className += ' current-image';
       }
     }
 
     function main() {
-      count = scope.images.length;
-      imagesPerBatch = Number(scope.imagesPerBatch) || 5;
-      innerDiv = document.querySelector('.thumbs-inner');
-      mainDiv = document.querySelector('.carousel-main');
+      processImages();
 
+      // Advances to the next batch of thumbnails.
       scope.nextBatch = function () {
         timerReset = true;
-        batchNumber++;
-        if (batchNumber * imagesPerBatch >= count) {
-          batchNumber = 0; // first batch
+        thumbDesc.index++;
+        if (thumbDesc.index * imagesPerBatch >= imageCount) {
+          thumbDesc.index = 0; // first batch
         }
-        makeBatch();
+        showBatch();
       };
 
+      // Retreats to the previous batch of thumbnails.
       scope.previousBatch = function () {
         timerReset = true;
-        if (batchNumber === 0) {
-          batchNumber = Math.floor(count / imagesPerBatch); // last batch
+        if (thumbDesc.index === 0) {
+          thumbDesc.index =
+            Math.floor(imageCount / imagesPerBatch); // last batch
         } else {
-          batchNumber--;
+          thumbDesc.index--;
         }
-        makeBatch();
+        showBatch();
       };
 
-      scope.index = 0;
-      createFirstImage();
-      makeBatch();
+      // Start at the first image and the first batch of thumbnails.
+      fullDesc.index = thumbDesc.index = 0;
+      thumbImgs[fullDesc.index].className += ' current-image';
+      showFull();
+      showBatch();
+
+      // Automatically advance to the next image every this many seconds.
+      var seconds = Number(scope.secondsPerImage) || 2;
+      $interval(advance, seconds * 1000);
     }
 
-    function makeBatch() {
-      batchImages = [];
+    // Opens a given URL in a new browser window/tab.
+    function openUrl(url) {
+      window.open(url, '_blank');
+    }
 
-      // Create a div to hold the next batch of thumbnails.
-      var newBatchDiv = document.createElement('div');
-      newBatchDiv.className = 'thumb-batch';
+    // Creates all the div and img elements that are needed.
+    function processImages() {
+      var batchCount = Math.ceil(imageCount / imagesPerBatch);
+      var div;
 
-      // Create an img element for each thumbnail in this batch
-      // and add to the new div.
-      scope.index = batchNumber * imagesPerBatch;
-      var lastIndex =
-        Math.min(scope.index + imagesPerBatch, count);
-      for (var i = scope.index; i < lastIndex; i++) {
-        var img = makeThumbImage(i);
-        batchImages.push(img);
-
-        // Create a div to hold this img element.
-        var imgDiv = document.createElement('div');
-        imgDiv.appendChild(img);
-        newBatchDiv.appendChild(imgDiv);
+      // Create a div to hold each batch of thumbnails.
+      for (var i = 0; i < batchCount; i++) {
+        div = document.createElement('div');
+        div.className = 'thumb-batch';
+        thumbDesc.elementArray.push(div);
       }
 
-      // The first image in the batch is the current one.
-      batchImages[0].className += ' current-image';
+      for (var index = 0; index < imageCount; index++) {
+        var obj = scope.images[index]; // has properties full, thumb and url
 
-      // Remember the width of the previous batch for later.
-      var delta = batchDiv ? getComputedStyle(batchDiv).width : 0;
+        // Create the full-size image.
+        var img = new Image();
+        img.className = 'carousel-img';
+        img.src = obj.full;
+        if (obj.url) img.onclick = openUrl.bind(null, obj.url);
+        fullDesc.elementArray[index] = img;
 
-      function tranEnd() {
-        batchDiv.removeEventListener('transitionend', tranEnd, false);
+        // Create the thumbnail-size image.
+        img = new Image();
+        img.className = 'carousel-thumb';
+        img.src = obj.thumb || obj.full;
+        img.onclick = selectImage.bind(null, index);
 
-        // Remove the batch that slid off the screen.
-        innerDiv.removeChild(batchDiv);
-        batchDiv = newBatchDiv;
+        div = document.createElement('div');
+        div.appendChild(img);
+        var bIndex = Math.floor(index / imagesPerBatch);
+        thumbDesc.elementArray[bIndex].appendChild(div);
+        thumbImgs[index] = img;
       }
-
-      // If there was a previous batch ...
-      if (batchDiv) {
-        // Add the new batch to the right of the current one.
-        newBatchDiv.style.left = delta;
-        innerDiv.appendChild(newBatchDiv);
-
-        // Call tranEnd above when the transition of the previous batch ends.
-        batchDiv.addEventListener('transitionend', tranEnd, false);
-
-        // Wait for the next turn in the event loop.
-        setTimeout(function () {
-          // Slide the previous batch out of view.
-          batchDiv.style.left = '-' + delta;
-
-          // Slide the new batch into view.
-          newBatchDiv.style.left = '0px';
-
-          updateFullImage();
-        }, 150); // doesn't work in Firefox if <= 10
-      } else {
-        batchDiv = newBatchDiv;
-        batchDiv.style.left = '0px';
-        innerDiv.appendChild(batchDiv);
-      }
-
-      batchIndex = 0;
     }
 
-    function makeFullImage() {
-      var img = new Image();
-      img.className = 'carousel-img';
-      return img;
-    }
-
-    function makeThumbImage(index) {
-      var img = new Image();
-      img.className = 'carousel-thumb';
-      var obj = scope.images[index];
-      img.src = obj.thumb || obj.full;
-      img.onclick = selectImage.bind(null, index);
-      return img;
-    }
-
-    function selectImage(index) {
+    // Advance to an image in the current batch of thumbnails
+    // specified by index.
+    function selectImage(newIndex) {
       timerReset = true;
 
       // Remove selection indicator from current thumbnail.
-      batchImages[batchIndex].className = 'carousel-thumb';
+      thumbImgs[fullDesc.index].className = 'carousel-thumb';
 
-      scope.index = index;
-      batchIndex = index % imagesPerBatch;
+      fullDesc.index = newIndex;
 
       // Add selection indicator to new thumbnail.
-      batchImages[batchIndex].className += ' current-image';
+      thumbImgs[fullDesc.index].className += ' current-image';
 
-      updateFullImage();
+      showFull();
     }
 
-    function updateFullImage() {
-      // Create a new img element.
-      var nextImg = makeFullImage();
-
+    // Advance to the next full-size image or batch of thumbnails
+    // based the "descriptor" object that is passed.
+    function showNext(desc) {
       // When the transition ends ...
       function tranEnd() {
-        // Remove the image that slid off the screen.
-        currImg.removeEventListener('transitionend', tranEnd, false);
-        mainDiv.removeChild(currImg);
+        nextElement.removeEventListener('transitionend', tranEnd, false);
 
-        // Make the next image be the current image.
-        currImg = nextImg;
+        // Remove the element that slid off the screen.
+        var el = desc.currentElement;
+        var parent = el.parentElement;
+        if (parent) parent.removeChild(el);
 
-        // Record its width so the next image
-        // can be placed to the right of it.
-        currWidth = nextImg.width;
+        // Make the next element be the current element.
+        desc.currentElement = nextElement;
       }
-      currImg.addEventListener('transitionend', tranEnd, false);
 
-      // After the image has loaded ...
-      nextImg.onload = function () {
-        // Place the image to the right of the current one.
-        nextImg.style.left = currWidth + 'px';
-        mainDiv.appendChild(nextImg);
+      var nextElement = desc.elementArray[desc.index];
+      var width;
 
-        // Wait for the next turn in the event loop.
+      // If there was a previous element ...
+      if (desc.currentElement) {
+        nextElement.addEventListener('transitionend', tranEnd, false);
+
+        // Place the element to the right of the current one.
+        width = getComputedStyle(desc.currentElement).width;
+        nextElement.style.left = width;
+      } else {
+        nextElement.style.left = '0px';
+        desc.currentElement = nextElement;
+      }
+
+      desc.parentElement.appendChild(nextElement);
+
+      if (desc.currentElement) {
+        // In next turn of the event loop ...
         setTimeout(function () {
-          // Slide the current and next image to the left.
-          currImg.style.left = '-' + currWidth + 'px';
-          nextImg.style.left = '0px';
-        }, 15); // doesn't work in Firefox if <= 10
-      };
+          // Slide the current and next elements to the left.
+          desc.currentElement.style.left = '-' + width;
+          nextElement.style.left = '0px';
+        }, 15);
+      }
+    }
 
-      // Start loading the next image.
-      loadFullImage(nextImg);
+    // Shows the next batch of thumbnails.
+    function showBatch() {
+      showNext(thumbDesc);
+
+      // The first image in the batch is the current one.
+      thumbImgs[fullDesc.index].className += ' current-image';
+    }
+
+    // Shows the next full-size image.
+    function showFull() {
+      showNext(fullDesc);
     }
 
     main();
-
-    var seconds = Number(scope.secondsPerImage) || 2;
-    $interval(advance, seconds * 1000);
   }
 
   /**
@@ -258,7 +235,7 @@
    * secondsPerImage is the number of seconds each image should be displayed
    * before advancing to the next.  It defaults to 2.
    */
-  module.directive('rmvCarousel', function ($interval) {
+  module.directive('rmvCarousel', ['$interval', function ($interval) {
     return {
       restrict: 'AE',
       templateUrl: 'carousel.html',
@@ -272,5 +249,5 @@
         link(scope, $interval);
       }
     };
-  });
+  }]);
 })();

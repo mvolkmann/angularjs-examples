@@ -1,0 +1,67 @@
+@main-height: 200px;
+
+.carousel {
+  width: 600px;
+
+  .carousel-img {
+    height: @main-height;
+    position: absolute;
+    transition: all 1.0s ease-in-out;
+  }
+
+  .carousel-main {
+    height: @main-height;
+    margin: 0 auto 2px auto;
+    overflow: hidden;
+    position: relative;
+    width: 600px;
+  }
+
+  // Avoiding class name "thumbnail" because
+  // Twitter Bootstrap defines that.
+  .carousel-thumb {
+    height: 73px;
+    vertical-align: top;
+  }
+
+  .left-arrow, .right-arrow {
+    vertical-align: 42px;
+  }
+
+  .thumb-batch {
+    position: absolute;
+    transition: all 1.0s ease-in-out;
+  }
+
+  .thumb-batch > div {
+    height: 73px;
+    margin: 6px;
+    overflow: hidden;
+    width: 88px;
+  }
+
+  .thumbs {
+    background-color: #a6adb6;
+    text-align: center;
+
+    div {
+      display: inline-block;
+    }
+  }
+
+  .thumbs-inner {
+    height: 90px;
+    overflow: hidden;
+    position: relative;
+    width: 500px;
+  }
+
+  .thumbs-inner img {
+    border-top: solid transparent 3px;
+    height: 100%
+  }
+
+  .thumbs-inner img.current-image {
+    border-top: solid blue 3px;
+  }
+}
