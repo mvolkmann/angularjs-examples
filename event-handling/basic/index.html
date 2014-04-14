@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+  <head>
+    <link rel="stylesheet" href="demo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <script src="demo.js"></script>
+  </head>
+  <body ng-controller="DemoCtrl">
+    <input type="text" ng-model="name" ng-change="nameChanged()">
+    <button ng-class="btnClass" ng-click="greet()">Greet</button>
+  </body>
+</html>
+
