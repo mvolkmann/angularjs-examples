@@ -47,7 +47,7 @@
       <br>
       5) Pick a fruit:
       <select ng-model="selectedFruit"
-        ng-options="name for (name, fruit) in fruitMap | orderBy:'name'">
+        ng-options="name for (name, fruit) in fruitMap">
       </select>
       <div>
         You selected {{selectedFruit.name}} which is
@@ -58,7 +58,7 @@
       6) Pick a fruit:
       <!-- Can't select each fruit that has the same color! -->
       <select ng-model="selectedFruitColor"
-        ng-options="fruit.color as name for (name, fruit) in fruitMap | orderBy:'name'">
+        ng-options="fruit.color as name for (name, fruit) in fruitMap">
       </select>
       <div>
         The color of the selected fruit is
@@ -68,7 +68,7 @@
       <br>
       7) Pick a fruit:
       <select ng-model="selectedFruit"
-        ng-options="name group by fruit.color for (name, fruit) in fruitMap | orderBy:'name'">
+        ng-options="name group by fruit.color for (name, fruit) in fruitMap">
       </select>
       <div>
         You selected {{selectedFruit.name}} which is
@@ -79,7 +79,7 @@
       8) Pick a fruit:
       <!-- Can't select each fruit that has the same color! -->
       <select ng-model="selectedFruitColor"
-        ng-options="fruit.color as name group by fruit.color for (name, fruit) in fruitMap | orderBy:'name'">
+        ng-options="fruit.color as name group by fruit.color for (name, fruit) in fruitMap">
       </select>
       <div>
         The color of the selected fruit is

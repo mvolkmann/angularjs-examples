@@ -1,0 +1,16 @@
+{
+  "name": "dialog",
+  "version": "0.0.0",
+  "description": "AngularJS dialog demo",
+  "main": "index.html",
+  "dependencies": {
+    "express": "~4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "R. Mark Volkmann",
+  "license": "ISC"
+}

@@ -11,6 +11,6 @@ app.controller('DemoCtrl', function ($scope) {
   };
   $scope.$watchCollection('arr', function () {
     $scope.sum = $scope.arr.reduce(
-      function (n1, n2) { return n1 + n2; }, 0);
+      function (n1, n2) { return n1 + n2; });
   });
 });

@@ -1,0 +1,16 @@
+{
+  "name": "ng-repeat",
+  "version": "0.0.0",
+  "description": "demonstrates using ng-repeat",
+  "main": "repeat.js",
+  "dependencies": {
+    "express": "~4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "R. Mark Volkmann",
+  "license": "ISC"
+}

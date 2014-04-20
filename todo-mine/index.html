@@ -16,10 +16,10 @@
 
       <!-- Wrapping this in a form causes the button to be activated
         when the input has focus and the return key is pressed. -->
-      <form>
+      <form name="todoForm">
         <input type="text" ng-model="todoText" size="30"
-          placeholder="enter new todo here">
-        <button ng-click="addTodo()" ng-disabled="!todoText">Add</button>
+          placeholder="enter new todo here" required>
+        <button ng-click="addTodo()" ng-disabled="todoForm.$invalid">Add</button>
       </form>
 
       <ul class="unstyled">

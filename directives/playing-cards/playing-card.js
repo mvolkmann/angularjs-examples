@@ -36,7 +36,6 @@
         var card = svc.dealCard();
         if (card) hand.push(card);
       }
-      console.log('cards remaining =', deck.length);
       return hand;
     };
 

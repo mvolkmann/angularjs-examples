@@ -21,7 +21,7 @@
         <label>Pattern (letter, digit)</label>
         <!-- a1 matches -->
         <input type="text" name="letterDigit" size="2" ng-model="charDigit"
-        ng-pattern="/^[A-Z,a-z]{1}\d$/">
+        ng-pattern="/^[A-Z,a-z]\d$/">
         <span ng-show="myForm.letterDigit.$error.pattern">regex fail</span>
       </div>
 
