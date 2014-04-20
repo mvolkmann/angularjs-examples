@@ -4,6 +4,29 @@
 
   var app = angular.module('CatalogApp', ['ngRoute']);
 
+  var catalogResolve = {
+    colors: function (catalogSvc) {
+      return catalogSvc.getColors();
+    },
+    shapes: function (catalogSvc) {
+      return catalogSvc.getShapes();
+    }
+  };
+
+  app.config(function ($routeProvider) {
+    $routeProvider
+      .when('/catalog', {
+        // controller must be specified here instead of in catalog.html
+        controller: 'CatalogCtrl',
+        templateUrl: 'catalog.html',
+        view: 'center',
+        resolve: catalogResolve
+      })
+      .otherwise({
+        redirectTo: '/catalog'
+      });
+  });
+
   app.factory('catalogSvc', function ($q, $timeout) {
     var svc = {};
 
@@ -38,28 +61,5 @@
     //  function (colors) { $scope.colors = colors; });
     //catalogSvc.getShapes().then(
     //  function (shapes) { $scope.shapes = shapes; });
-  });
-
-  var catalogResolve = {
-    colors: function (catalogSvc) {
-      return catalogSvc.getColors();
-    },
-    shapes: function (catalogSvc) {
-      return catalogSvc.getShapes();
-    }
-  };
-
-  app.config(function ($routeProvider) {
-    $routeProvider
-      .when('/catalog', {
-        // controller must be specified here instead of in catalog.html
-        controller: 'CatalogCtrl',
-        templateUrl: 'catalog.html',
-        view: 'center',
-        resolve: catalogResolve
-      })
-      .otherwise({
-        redirectTo: '/catalog'
-      });
   });
 })();
