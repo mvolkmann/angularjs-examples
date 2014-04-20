@@ -1,10 +1,10 @@
-<br/>
+<br>
 <div>
   <div>
     {{getUncompletedCount()}} of {{getTotalCount()}} remaining
     <button id="archive-btn" ng-click="archiveCompleted()">Archive Completed</button>
   </div>
-  <br/>
+  <br>
 
   <!-- Why does Chrome render the add button with square corners
        and the delete buttons with rounded corners?
@@ -13,16 +13,16 @@
        when the input has focus and the return key is pressed. -->
   <form>
     <input type="text" class="todo-text" ng-model="todoText"
-      placeholder="enter new todo here"/>
+      placeholder="enter new todo here">
     <button id="add-btn" ng-click="createTodo()"
       ng-disabled="!todoText">&#xFF0B;</button>
   </form>
 
   <ul class="unstyled">
     <li ng-repeat="(id, todo) in todos">
-      <input type="checkbox" ng-model="todo.done" ng-change="updateTodo(todo)"/>
+      <input type="checkbox" ng-model="todo.done" ng-change="updateTodo(todo)">
       <input type="text" class="todo-text done-{{todo.done}}"
-        ng-model="todo.text" ng-change="updateTodo(todo)"/>
+        ng-model="todo.text" ng-change="updateTodo(todo)">
       <button class="delete-btn" ng-click="deleteTodo(id)">&#xD7;</button>
     </li>
   </ul>

@@ -34,25 +34,21 @@ app.factory('todoSvc', function ($http) {
   var svc = {};
   var urlPrefix = 'todo';
 
-  function errorCb(err) {
-    alert('Error in todoSvc: ' + err);
-  }
-
-  svc.archive = function (id, cb) {
-    $http.post(urlPrefix + '/' + id + '/archive').success(cb).error(errorCb);
+  svc.archive = function (id) {
+    return $http.post(urlPrefix + '/' + id + '/archive');
   };
 
-  svc.create = function (todo, cb) {
+  svc.create = function (todo) {
     var options = {headers: {'Content-Type': 'application/json'}};
-    $http.post(urlPrefix, todo, options).success(cb).error(errorCb);
+    return $http.post(urlPrefix, todo, options);
   };
 
-  svc['delete'] = function (id, cb) {
-    $http['delete'](urlPrefix + '/' + id).success(cb).error(errorCb);
+  svc['delete'] = function (id) {
+    return $http['delete'](urlPrefix + '/' + id);
   };
 
-  svc.retrieve = function (id, cb) {
-    $http.get(urlPrefix + '/' + id).success(cb).error(errorCb);
+  svc.retrieve = function (id) {
+    return $http.get(urlPrefix + '/' + id);
   };
 
   svc.retrieveActive = function () {
@@ -63,8 +59,8 @@ app.factory('todoSvc', function ($http) {
     return $http.get(urlPrefix + '/archive');
   };
 
-  svc.update = function (todo, cb) {
-    $http.put(urlPrefix + '/' + todo.id, todo).success(cb).error(errorCb);
+  svc.update = function (todo) {
+    return $http.put(urlPrefix + '/' + todo.id, todo);
   };
 
   return svc;
@@ -80,33 +76,39 @@ app.controller('TodoActiveCtrl', function ($scope, todoSvc, todos) {
   $scope.todos = todos.data;
   $scope.$parent.otherView = 'Archive';
 
+  function errorCb(err) {
+    alert('Error in todoSvc: ' + err);
+  }
+
   $scope.archiveCompleted = function () {
     Object.keys($scope.todos).forEach(function (id) {
       var todo = $scope.todos[id];
       if (todo.done) {
-        todoSvc.archive(id, function () {
-          delete $scope.todos[id];
-        });
+        todoSvc.archive(id).
+          success(function () { delete $scope.todos[id]; }).
+          error(errorCb);
       }
     });
   };
 
   $scope.createTodo = function () {
     var todo = {text: $scope.todoText, done: false};
-    todoSvc.create(todo, function (resourceUrl) {
-      // Get id assigned to new todo from resource URL.
-      var index = resourceUrl.lastIndexOf('/');
-      todo.id = resourceUrl.substring(index + 1);
+    todoSvc.create(todo).
+      success(function (resourceUrl) {
+        // Get id assigned to new todo from resource URL.
+        var index = resourceUrl.lastIndexOf('/');
+        todo.id = resourceUrl.substring(index + 1);
 
-      $scope.todos[todo.id] = todo; // add todo to active UI
-      $scope.todoText = ''; // clear input field
-    });
+        $scope.todos[todo.id] = todo; // add todo to active UI
+        $scope.todoText = ''; // clear input field
+      }).
+      error(errorCb);
   };
 
   $scope.deleteTodo = function (id) {
-    todoSvc['delete'](id, function () {
-      delete $scope.todos[id];
-    });
+    todoSvc['delete'](id).
+      success(function () { delete $scope.todos[id]; }).
+      error(errorCb);
   };
 
   $scope.getUncompletedCount = function () {
@@ -123,7 +125,9 @@ app.controller('TodoActiveCtrl', function ($scope, todoSvc, todos) {
   };
 
   $scope.updateTodo = function (todo) {
-    todoSvc.update(todo, angular.noop);
+    todoSvc.update(todo).
+      success(angular.noop).
+      error(errorCb);
   };
 });
 
