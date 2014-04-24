@@ -8,7 +8,7 @@
     <form>
       <label>Number:</label>
       <input type="number" autofocus ng-model="n">
-      <button ng-click="push()">Push</button>
+      <button ng-click="push()" ng-disabled="!n">Push</button>
     </form>
     <div>
       <label>Array:</label> {{arr}}

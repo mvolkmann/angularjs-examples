@@ -1,0 +1,25 @@
+<html ng-app="Demo">
+  <head>
+    <title>AngularJS Form Validation With ng-repeat</title>
+    <link rel="stylesheet" href="demo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    <script src="demo.js"></script>
+  </head>
+  <body>
+    <form name="myForm" ng-controller="DemoCtrl">
+      <div ng-repeat="person in people">
+        <div ng-form="nested">
+          Name:
+          <!--input name="name{{$index}}"-->
+          <input name="name"
+            type="text"
+            ng-model="person.name" required
+            ng-pattern="/^[A-Z][a-z]+$/">
+          Nested name errors: {{nested.name.$error}}
+          Nested errors: {{nested.$error}}
+        </div>
+      </div>
+    </form>
+    myForm Errors: {{myForm.$error}}
+  </body>
+</html>

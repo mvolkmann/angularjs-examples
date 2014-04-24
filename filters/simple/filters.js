@@ -16,7 +16,7 @@ app.controller('FilterCtrl', function ($scope) {
     {sport: 'basketball', color: 'orange', size: 'large'},
     {sport: 'football', color: 'brown', size: 'large'},
     {sport: 'golf', color: 'white', size: 'small'},
-    {sport: 'puck', color: 'black', size: 'medium'},
+    {sport: 'hockey', color: 'black', size: 'medium'},
     {sport: 'tennis', color: 'yellow', size: 'medium'}
   ];
 
