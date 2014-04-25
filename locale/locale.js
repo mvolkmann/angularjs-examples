@@ -11,6 +11,7 @@
     function loadTranslations(lang) {
       console.log('locale: loading translations for lang =', lang);
       var url = 'L10n/' + lang + '.json';
+      // After the HTTP response is processed, a digest cycle is triggered.
       $http.get(url, {ContentType: 'application/json'}).
         success(function (data) {
           translations[lang] = data;
@@ -35,7 +36,7 @@
         tmhDynamicLocale.set(lang); // causes digest cycle
 
         // Change L10n language.
-        if (!translations[lang]) loadTranslations(lang); // causes digest cycle
+        if (!translations[lang]) loadTranslations(lang);
         currentLang = sessionStorage.currentLang = lang;
       }
     };
@@ -51,11 +52,14 @@
   });
 
   module.filter('L10n', function (localeSvc) {
+    // scope is an optional directive parameter that is
+    // only needed for translations that contain binding expressions.
     return function (phrase, scope) {
       if (!currentLang) {
         console.log('locale: loading from sessionStorage');
         // This occurs when the user refreshes a page.
-        // Get translations from sessionStorage.
+        // Get the current language and translations
+        // from sessionStorage.
         currentLang = sessionStorage.currentLang;
         translations = JSON.parse(sessionStorage.translations);
       }
