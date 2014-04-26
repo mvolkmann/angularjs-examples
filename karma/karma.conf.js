@@ -22,12 +22,6 @@ module.exports = function (config) {
       'test/unit/*-spec.js'
     ],
 
-    plugins: [
-      'karma-chrome-launcher',
-      'karma-jasmine',
-      'karma-ng-html2js-preprocessor'
-    ],
-
     // list of files to exclude
     exclude: [
     ],
@@ -65,7 +59,7 @@ module.exports = function (config) {
     browsers: ['Chrome'],
 
     // If browser does not capture in given timeout [ms], kill it
-    captureTimeout: 60000,
+    captureTimeout: 10000,
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits

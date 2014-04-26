@@ -147,10 +147,10 @@ describe('addressLabel directive', function () {
     };
 
     var html = '<address-label address="myAddress"></address-label>';
-    var element = angular.element(html);
-    $compile(element)(scope);
+    //var element = angular.element(html);
+    //$compile(element)(scope);
     // Alternative to previous two lines.
-    //var element = $compile(html)(scope);
+    var element = $compile(html)(scope);
 
     // Initiate digest cycle to update DOM based on scope changes.
     scope.$digest();
