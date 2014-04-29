@@ -20,6 +20,14 @@ app.controller('FilterCtrl', function ($scope) {
     {sport: 'tennis', color: 'yellow', size: 'medium'}
   ];
 
+  $scope.greekObj = {
+    delta: {v: 4},
+    beta: {v: 2},
+    epsilon: {v: 5},
+    gamma: {v: 3},
+    alpha: {v: 1}
+  };
+
   $scope.longString = function (text) {
     return text.length > 5;
   };

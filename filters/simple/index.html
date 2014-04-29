@@ -2,7 +2,7 @@
 <html ng-app="Filters">
   <head>
     <link rel="stylesheet" href="filters.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
     <script src="filters.js"></script>
   </head>
   <body>
@@ -67,7 +67,7 @@
       </div>
       <div>
         <label>Reverse sorted balls:</label>
-        <span ng-repeat="ball in balls | orderBy:[-'sport']">
+        <span ng-repeat="ball in balls | orderBy:'-sport'">
           {{ball.sport}}
         </span>
       </div>
@@ -75,6 +75,14 @@
         <label>Sorted balls by size then color:</label>
         <span ng-repeat="ball in balls | orderBy:['size', 'color']">
           {{ball.sport}}:{{ball.size}}:{{ball.color}}&nbsp;
+        </span>
+      </div>
+      <div>
+        <label>Greek keys:</label>
+        <!-- This demonstrates that when orderBy is used on an object, it
+             always sorts on the keys, regardless of the orderBy parameter. -->
+        <span ng-repeat="(key, value) in greekObj | orderBy:'blah'">
+          {{key}}:{{value}}&nbsp;
         </span>
       </div>
     </div>
