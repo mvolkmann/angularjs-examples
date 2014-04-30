@@ -64,11 +64,7 @@
         translations = JSON.parse(sessionStorage.translations);
       }
 
-      var result = localeSvc.translate(phrase, scope);
-      if (phrase === 'Language') {
-        console.log('translated', phrase, 'to', result);
-      }
-      return result;
+      return localeSvc.translate(phrase, scope);
     };
   });
 })();

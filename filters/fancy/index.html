@@ -25,7 +25,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="player in players | filter:filter | filter:baFilter | orderBy:sortKey:reverse">
+        <tr ng-repeat="player in players |
+                       filter:filter |
+                       filter:baFilter |
+                       orderBy:sortKey:reverse">
           <td ng-repeat="key in keys">{{player[key]}}</td>
         </tr>
       </tbody>

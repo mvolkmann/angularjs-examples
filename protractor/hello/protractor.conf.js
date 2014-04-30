@@ -2,7 +2,7 @@
 
 var seleniumServerJar =
   '/usr/local/lib/node_modules/protractor' +
-  '/selenium/selenium-server-standalone-2.40.0.jar';
+  '/selenium/selenium-server-standalone-2.41.0.jar';
 
 // A reference configuration file.
 exports.config = {
@@ -43,7 +43,7 @@ exports.config = {
 
   // The address of a running selenium server. If specified, Protractor will
   // connect to an already running instance of selenium. This usually looks like
-  // seleniumAddress: 'http://localhost:4444/wd/hub'
+  //seleniumAddress: 'http://localhost:4444/wd/hub',
   seleniumAddress: null,
 
   // The timeout for each script run on the browser. This should be longer
