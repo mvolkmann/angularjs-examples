@@ -37,7 +37,7 @@
       zip: 63304
     };
 
-    demoSvc.getContent('http://localhost:3000/demo').
+    demoSvc.getContent('http://localhost:3000').
       success(function (data) {
         console.log('data =', data);
       }).
@@ -54,8 +54,9 @@
   app.directive('evenOddClass', function () {
     var evenClass, oddClass;
 
-    function evaluate(number, element) {
-      if (number % 2 === 0) {
+    function evaluate(value, element) {
+      console.log('karma-demo evaluate: value =', value);
+      if (value % 2 === 0) {
         element.removeClass(oddClass);
         element.addClass(evenClass);
       } else {
@@ -65,15 +66,21 @@
     }
 
     return {
+      scope: {
+        evenOddExpr: '&'
+      },
       restrict: 'A',
       link: function (scope, element, attrs) {
         var classNames = attrs.evenOddClass.split(',');
         evenClass = classNames[0];
         oddClass = classNames[1];
-        scope.$watch('number', function (newValue) {
+        
+        scope.$watch(scope.evenOddExpr, function (newValue) {
+          console.log('karma-demo watch: newValue =', newValue);
           evaluate(newValue, element);
         });
-        evaluate(scope.number, element);
+
+        evaluate(scope.evenOddExpr, element);
       }
     };
   });
