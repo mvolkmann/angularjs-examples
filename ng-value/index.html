@@ -7,8 +7,8 @@
   <body ng-controller="DemoCtrl">
     <label>Color: </label>
     <label ng-repeat="color in colors" for="{{color}}">
-      {{color}}
       <input id="{{color}}" type="radio" ng-value="color" ng-model="favorite.color">
+      {{color}}
     </label>
     <div>
       You selected {{favorite.color}}.

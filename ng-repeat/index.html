@@ -14,8 +14,6 @@
         <th>Color</th>
         <th>Even?</th>
       </tr>
-      <!-- The class specified with ng-class-even is used with $even is false! -->
-      <!-- The class specified with ng-class-odd is used with $odd is false! -->
       <tr ng-repeat="fruit in fruits | orderBy:'name'"
         ng-class="{first: $first, middle: $middle, last: $last}"
         ng-class-even="'even'" ng-class-odd="'odd'">
