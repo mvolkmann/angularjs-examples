@@ -31,23 +31,15 @@
     var svc = {};
 
     svc.getColors = function () {
-      var dfr = $q.defer();
-      // Simulate an async Ajax request.
-      $timeout(function () {
-        var colors = ['red', 'blue', 'green'];
-        dfr.resolve(colors);
+      return $timeout(function () {
+        return ['red', 'blue', 'green'];
       }, 500);
-      return dfr.promise;
     };
 
     svc.getShapes = function () {
-      var dfr = $q.defer();
-      // Simulate an async Ajax request.
-      $timeout(function () {
-        var shapes = ['square', 'circle', 'triangle'];
-        dfr.resolve(shapes);
+      return $timeout(function () {
+        return ['square', 'circle', 'triangle'];
       }, 300);
-      return dfr.promise;
     };
 
     return svc;

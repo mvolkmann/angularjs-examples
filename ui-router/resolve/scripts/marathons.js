@@ -9,28 +9,24 @@
     var svc = {};
 
     svc.getMarathons = function () {
-      var dfr = $q.defer();
-      $timeout(function () {
-        dfr.resolve([
+      return $timeout(function () {
+        return [
           {name: 'Boston Marathon', month: 'April', state: 'Massachusetts'},
           {name: 'Chicago Marathon', month: 'October', state: 'Illinois'},
           {name: 'New York Marathon', month: 'November', state: 'New York'}
-        ]);
+        ];
       }, 1500);
-      return dfr.promise;
     };
 
     svc.getRunners = function () {
-      var dfr = $q.defer();
-      $timeout(function () {
-        dfr.resolve([
+      return $timeout(function () {
+        return [
           {firstName: 'Ryan', lastName: 'Hall'},
           {firstName: 'Meb', lastName: 'Keflezighi'},
           {firstName: 'Paula', lastName: 'Radcliffe'},
           {firstName: 'Kara', lastName: 'Goucher'},
-        ]);
+        );
       }, 1000);
-      return dfr.promise;
     };
 
     return svc;
