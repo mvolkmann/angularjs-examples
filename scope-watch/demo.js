@@ -11,4 +11,8 @@ app.controller('DemoCtrl', function ($scope) {
   }
 
   $scope.$watch('foo', listener, true); // deep watch
+
+  $scope.$watch('n % 2', function () {
+    console.log('even/odd state changed');
+  });
 });

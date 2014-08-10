@@ -24,10 +24,8 @@ app.controller('DemoCtrl', function ($scope) {
   $scope.inc = function (item) { item.price++; };
 
   $scope.$watch('cart', function () {
-    var total = 0;
-    $scope.cart.forEach(function (item) {
-      total += item.price;
-    });
-    $scope.total = total;
+    $scope.total = $scope.cart.reduce(function (total, item) {
+      return total + item.price;
+    }, 0);
   }, true); // true for deep
 });
