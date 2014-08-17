@@ -1,7 +1,7 @@
 To run the tests in this directory
 - open a new terminal
 - cd to this directory
-- node server.js
+- enter "grunt"
 - open a new terminal
 - cd to this directory
-- protractor protractor-conf-js
+- enter "protractor" or "grunt protractor"
