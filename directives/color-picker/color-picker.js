@@ -12,7 +12,8 @@
   });
 
   /**
-   * Example usage: <rmv-color-picker></rmv-color-picker>
+   * Example usage:
+   * <rmv-color-picker ng-model="myColor"></rmv-color-picker>
    */
   module.directive('rmvColorPicker', function (colorToRgbString) {
     function updateSwatch(scope) {

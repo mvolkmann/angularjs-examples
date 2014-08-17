@@ -55,7 +55,7 @@
     var evenClass, oddClass;
 
     function evaluate(value, element) {
-      console.log('karma-demo evaluate: value =', value);
+      //console.log('karma-demo evaluate: value =', value);
       if (value % 2 === 0) {
         element.removeClass(oddClass);
         element.addClass(evenClass);
@@ -76,7 +76,7 @@
         oddClass = classNames[1];
         
         scope.$watch(scope.evenOddExpr, function (newValue) {
-          console.log('karma-demo watch: newValue =', newValue);
+          //console.log('karma-demo watch: newValue =', newValue);
           evaluate(newValue, element);
         });
 

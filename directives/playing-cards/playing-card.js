@@ -61,11 +61,15 @@
       // Those are used for suit characters.
       template: '<div class="playing-card" style="color:{{color}}"' +
         ' ng-bind-html="content"></div>',
+      //template: '<div>foo = {{foo}}, bar = {{bar}}</div>', // can't see these
       replace: true,
       scope: {
         playingCard: '='
       },
       link: function (scope) {
+        //console.log('foo =', scope.$parent.foo); // works!  Set in CardGameCtrl.
+        //console.log('bar =', scope.$root.bar); // works!  Set in CardGameCtrl.
+
         var suit = scope.playingCard.suit;
         scope.color = suit === 'hearts' || suit === 'diamonds' ?
           'red' : 'black';

@@ -105,13 +105,13 @@ describe('asWord filter', function () {
 
 // Test a directive.
 //TODO: Why doesn't this test work?
-xdescribe('evenOddClass directive', function () {
+describe('evenOddClass directive', function () {
   beforeEach(module('KarmaDemo'));
 
   it('should add correct CSS class to an element',
     inject(function ($compile, $rootScope) {
 
-    var scope = $rootScope.$new();
+    var scope = $rootScope;
 
     scope.number = 1;
     // The directive should add the CSS class "bar"
@@ -119,6 +119,7 @@ xdescribe('evenOddClass directive', function () {
     // This will fail if no directive named "even-odd-class" exists.
     var element =
       $compile('<span even-odd-class="foo,bar" even-odd-expr="number"></span>')(scope);
+    scope.$digest();
     expect(element.hasClass('bar')).toBe(true);
 
     scope.number = 2;
@@ -126,6 +127,7 @@ xdescribe('evenOddClass directive', function () {
     // to the element because number is even.
     element =
       $compile('<span even-odd-class="foo,bar" even-odd-expr="number"></span>')(scope);
+    scope.$digest();
     expect(element.hasClass('foo')).toBe(true);
   }));
 });
@@ -138,7 +140,8 @@ describe('addressLabel directive', function () {
   beforeEach(module('KarmaDemo', 'partials/address.html'));
 
   it('should create address label', inject(function ($compile, $rootScope) {
-    var scope = $rootScope.$new();
+    //var scope = $rootScope.$new();
+    var scope = $rootScope;
 
     scope.myAddress = {
       street: '644 Glen Summit',
@@ -148,9 +151,6 @@ describe('addressLabel directive', function () {
     };
 
     var html = '<address-label address="myAddress"></address-label>';
-    //var element = angular.element(html);
-    //$compile(element)(scope);
-    // Alternative to previous two lines.
     var element = $compile(html)(scope);
 
     // Initiate digest cycle to update DOM based on scope changes.

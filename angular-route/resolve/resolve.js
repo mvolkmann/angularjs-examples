@@ -27,7 +27,7 @@
       });
   });
 
-  app.factory('catalogSvc', function ($q, $timeout) {
+  app.factory('catalogSvc', function ($timeout) {
     var svc = {};
 
     svc.getColors = function () {
