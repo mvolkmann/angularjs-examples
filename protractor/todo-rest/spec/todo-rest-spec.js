@@ -6,13 +6,14 @@ var fs = require('fs');
 var http = require('http');
 
 describe('todo-rest', function () {
-  var addBtn, archiveBtn, changeViewBtn, input, ptor, ul;
+  var addBtn, archiveBtn, changeViewBtn, input, ul;
 
   beforeEach(function () {
-    deleteArchive();
-
-    ptor = protractor.getInstance();
     browser.get('http://localhost:1919/');
+
+    // For a clean start ...
+    deleteArchive();
+    deleteTodos();
 
     // Find elements that are used in the tests.
     input = element(by.model('todoText'));
@@ -20,8 +21,6 @@ describe('todo-rest', function () {
     archiveBtn = element(by.id('archive-btn'));
     changeViewBtn = element(by.id('change-view-btn'));
     ul = element(by.tagName('ul'));
-
-    deleteTodos(); // for a clean start
   });
 
   function deleteArchive() {
@@ -46,6 +45,7 @@ describe('todo-rest', function () {
   }
 
   function takeScreenshot(filePath) {
+    var ptor = protractor.getInstance();
     ptor.takeScreenshot().then(function (data) {
       var stream = fs.createWriteStream(filePath);
       stream.write(new Buffer(data, 'base64'));
