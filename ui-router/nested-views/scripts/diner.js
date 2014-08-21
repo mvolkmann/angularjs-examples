@@ -31,7 +31,7 @@
     $scope.name = 'Volkmann';
   });
 
-  app.controller('MealCtrl', function ($scope, $rootScope, $state, $timeout) {
+  app.controller('MealCtrl', function ($state, $timeout) {
     // This demonstrates changing state from code.
     // It changes to the "lunch" state after two seconds.
     // To use it, specify this as the controller for one or more of the states.
