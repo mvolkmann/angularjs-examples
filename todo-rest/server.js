@@ -94,5 +94,6 @@ app.post('/todo/:id/archive', function (req, res) {
 });
 
 var PORT = 1919;
-app.listen(PORT);
-console.log('listening on', PORT);
+app.listen(PORT, function () {
+  console.log('listening on', PORT);
+});

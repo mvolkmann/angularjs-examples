@@ -113,5 +113,6 @@ create({
 });
 
 var PORT = 3000;
-app.listen(PORT);
-console.log('browse http://localhost:' + PORT);
+app.listen(PORT, function () {
+  console.log('browse http://localhost:' + PORT);
+});
