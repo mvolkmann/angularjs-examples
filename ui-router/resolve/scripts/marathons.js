@@ -25,7 +25,7 @@
           {firstName: 'Meb', lastName: 'Keflezighi'},
           {firstName: 'Paula', lastName: 'Radcliffe'},
           {firstName: 'Kara', lastName: 'Goucher'},
-        );
+        ];
       }, 1000);
     };
 
